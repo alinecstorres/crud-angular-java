@@ -29,7 +29,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './fornecedores.component.html',
   styleUrl: './fornecedores.component.scss'
 })
-export class FornecedoresComponent implements OnInit{
+export class FornecedoresComponent {
 
   fornecedores$: Observable<Fornecedor[]>;
   displayedColumns = [ 'document', 'name', 'email', 'adressCode', 'actions' ];
@@ -44,7 +44,7 @@ export class FornecedoresComponent implements OnInit{
     .pipe(
       catchError(error => {
         this.onError('Erro ao carregar Fornecedores!')
-        return of([])
+        return of([]);
       })
     )
   }
@@ -55,11 +55,11 @@ export class FornecedoresComponent implements OnInit{
     })
   }
 
-  ngOnInit(): void {
-
-  }
-
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route})
+  }
+
+  onEmpresa(fornecedorDocumento: string) {
+    this.router.navigate(['empresas'], {relativeTo: this.route, queryParams: { fornecedorDocumento } })
   }
 }

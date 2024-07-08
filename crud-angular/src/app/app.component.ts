@@ -16,4 +16,5 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class AppComponent {
   title = 'crud-angular';
+
 }
